@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nebuloid Services – Création de sites vitrine professionnels. Sites sur-mesure, maintenance et SEO.">
+    <meta name="keywords" content="création site vitrine, agence web, site internet professionnel">
+    <meta name="author" content="Nebuloid Services">
+    <meta property="og:title" content="Nebuloid Services – Création de sites vitrine">
+    <meta property="og:description" content="Nous concevons des sites web modernes et performants pour votre entreprise.">
+    <meta property="og:image" content="URL d’une image de présentation">
+    <meta property="og:url" content="https://www.nebuloid-services.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <title>Portfolio - Nebuloid Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <button class="menu-toggle" aria-label="Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="home.html">Accueil</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+    <section id="portfolio" class="portfolio">
+        <h2>Portfolio</h2>
+        <div class="portfolio-item">
+            <img src="https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg" alt="Projet 1" data-lightbox="projet1">
+            <h3>Site pour Restaurant Local</h3>
+            <p>Un site vitrine moderne avec menu interactif et réservations en ligne.</p>
+        </div>
+        <div class="portfolio-item">
+            <img src="https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg" alt="Projet 2" data-lightbox="projet2">
+            <h3>Plateforme E-commerce</h3>
+            <p>Solution sur-mesure pour une boutique en ligne performante.</p>
+        </div>
+        <div class="portfolio-item">
+            <img src="https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg" alt="Projet 3" data-lightbox="projet3">
+            <h3>Blog Professionnel</h3>
+            <p>Design élégant et fonctionnalités avancées pour un blog d'entreprise.</p>
+        </div>
+        <div class="portfolio-item">
+            <img src="https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg" alt="Projet 4" data-lightbox="projet4">
+            <h3>Application de Gestion</h3>
+            <p>Tableau de bord sur-mesure pour PME.</p>
+        </div>
+        <div class="portfolio-item">
+            <img src="https://images.pexels.com/photos/209230/pexels-photo-209230.jpeg" alt="Projet 5" data-lightbox="projet5">
+            <h3>Site Vitrine pour Artisan</h3>
+            <p>Présentation élégante avec galerie photos.</p>
+        </div>
+        <div class="portfolio-item">
+            <img src="https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg" alt="Projet 6" data-lightbox="projet6">
+            <h3>Landing Page Produit</h3>
+            <p>Page de conversion optimisée pour le lancement.</p>
+        </div>
+    </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Nebuloid Services. Tous droits réservés.</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close">&times;</span>
+            <img class="lightbox-image" src="" alt="">
+            <h3 class="lightbox-title"></h3>
+            <p class="lightbox-description"></p>
+        </div>
+    </div>
+</body>
+</html>

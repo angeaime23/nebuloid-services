@@ -1,0 +1,466 @@
+/* Import Google Fonts - Poppins pour un look moderne et épuré */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Reset et styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* Header fixe avec effet de transparence */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 1rem 2rem;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header.scrolled {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #e74c3c;
+}
+
+/* Section Hero */
+.hero {
+    background: linear-gradient(135deg, #e74c3c 0%, #000 100%);
+    color: white;
+    padding: 8rem 2rem 4rem;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    animation: fadeIn 1s ease-in;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+.btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 50px;
+    display: inline-block;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+.btn:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+}
+
+/* Sections communes */
+.services, .portfolio, .about, .contact {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeIn 1s ease-in;
+}
+
+.services h2, .portfolio h2, .about h2, .contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Section Services - Cartes avec icônes et effet hover */
+.services {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.service-item {
+    background: white;
+    margin: 1rem 0;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #e74c3c, #000);
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.service-item i {
+    font-size: 3rem;
+    color: #e74c3c;
+    margin-bottom: 1rem;
+}
+
+.service-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+/* Section Portfolio - Grille responsive */
+.portfolio {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.portfolio-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, opacity 0.6s ease, transform 0.6s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+}
+
+.portfolio-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.portfolio-item h3 {
+    margin: 1rem 0 0.5rem;
+    color: #333;
+}
+
+/* Section About */
+.about {
+    text-align: center;
+    background: white;
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Contact - Formulaire stylisé */
+.contact {
+    background: white;
+    padding: 4rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.3s ease;
+}
+
+form input:focus, form textarea:focus {
+    outline: none;
+    border-color: #e74c3c;
+}
+
+form input:valid, form textarea:valid {
+    border-color: #28a745;
+}
+
+form input:invalid:not(:placeholder-shown), form textarea:invalid:not(:placeholder-shown) {
+    border-color: #dc3545;
+}
+
+/* Footer - Mise en page en colonnes */
+footer {
+    background: linear-gradient(135deg, #000 0%, #333 100%);
+    color: white;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer p {
+    margin-bottom: 1rem;
+}
+
+footer .social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+footer a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #e74c3c;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Menu */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        padding-top: 1rem;
+    }
+    nav ul.active {
+        display: flex;
+    }
+    nav ul li {
+        margin: 0.5rem 0;
+    }
+}
+
+/* Media Queries - Tablette */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+
+    .services {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .service-item {
+        flex: 1 1 45%;
+        max-width: 45%;
+        margin: 1rem;
+    }
+
+    .portfolio {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    nav ul li {
+        margin: 0 1.5rem;
+    }
+}
+
+/* Media Queries - Desktop */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .hero h1 {
+        font-size: 4rem;
+    }
+
+    .services {
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .service-item {
+        flex: 1 1 300px;
+        max-width: none;
+    }
+
+    .portfolio {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    nav ul li {
+        margin: 0 2rem;
+    }
+}
+
+/* Media Queries - Grand écran */
+@media (min-width: 1200px) {
+    .hero h1 {
+        font-size: 4.5rem;
+    }
+
+    .hero {
+        padding: 10rem 2rem 6rem;
+    }
+
+    .services, .portfolio, .about, .contact {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .portfolio {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    nav ul li {
+        margin: 0 2.5rem;
+    }
+}
+
+/* Lightbox Styles */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox.show {
+    display: flex;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #333;
+}
+
+.lightbox-image {
+    max-width: 100%;
+    max-height: 60vh;
+    margin-bottom: 15px;
+}
+
+.lightbox-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.lightbox-description {
+    font-size: 1rem;
+    color: #666;
+}

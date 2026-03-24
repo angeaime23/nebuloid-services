@@ -28,10 +28,11 @@
                 <li><a href="services.html">Services</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">À propos</a></li>
             </ul>
         </nav>
     </header>
-
+ 
     <main>
     <section id="contact" class="contact">
         <h2>Contactez-nous</h2>
@@ -42,6 +43,10 @@
             <textarea name="message" placeholder="Votre message" rows="5" required></textarea>
             <button type="submit" class="btn">Envoyer</button>
         </form>
+        <!-- Ajouter juste après l'ouverture du body -->
+<div class="loader">
+    <div class="spinner"></div>
+</div>
     </section>
     </main>
 
@@ -53,5 +58,16 @@
             <a href="#"><i class="fab fa-linkedin"></i></a>
         </div>
     </footer>
+
+<script>
+    // Masquer le loader après le chargement
+    window.addEventListener('load', () => {
+        const loader = document.querySelector('.loader');
+        setTimeout(() => {
+            loader.classList.add('hide');
+            setTimeout(() => loader.remove(), 500);
+        }, 500);
+    });
+</script>
 </body>
 </html>

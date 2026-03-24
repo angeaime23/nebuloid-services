@@ -28,6 +28,7 @@
                 <li><a href="services.html">Services</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">À propos</a></li>
             </ul>
         </nav>
     </header>
@@ -43,6 +44,60 @@
         <h2>À propos de nous</h2>
         <p>Nebuloid Services est une agence spécialisée dans la création de sites vitrine. Nos valeurs : innovation, qualité et satisfaction client.</p>
     </section>
+    <section class="faq">
+    <h2>Questions fréquentes</h2>
+    <div class="faq-grid">
+        <div class="faq-item">
+            <div class="faq-question">
+                Combien de temps faut-il pour créer un site ?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                Le délai moyen est de 2 à 4 semaines selon la complexité du projet.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                Proposez-vous un service de maintenance ?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                Oui, nous proposons des forfaits de maintenance mensuels pour assurer la sécurité et les mises à jour de votre site.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                Mon site sera-t-il responsive ?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                Absolument ! Tous nos sites sont conçus pour s'adapter parfaitement à tous les appareils (mobile, tablette, desktop).
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Ajouter juste après l'ouverture du body -->
+<div class="loader">
+    <div class="spinner"></div>
+</div>
+
+<script>
+    // FAQ accordéon
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            const faqItem = question.parentElement;
+            faqItem.classList.toggle('active');
+        });
+    });
+        // Masquer le loader après le chargement
+    window.addEventListener('load', () => {
+        const loader = document.querySelector('.loader');
+        setTimeout(() => {
+            loader.classList.add('hide');
+            setTimeout(() => loader.remove(), 500);
+        }, 500);
+    });
+</script>
     </main>
 
     <footer>

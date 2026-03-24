@@ -1,69 +1,98 @@
-// script.js - Vanilla JavaScript pour Nebuloid Services
-
+// script.js - Version améliorée
 document.addEventListener('DOMContentLoaded', function() {
-    // Menu mobile (hamburger)
-    const hamburger = document.getElementById('hamburger');
+    // Menu mobile (hamburger) - CORRECTION
+    const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
-    if (hamburger && navLinks) {
-        hamburger.addEventListener('click', function() {
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
             navLinks.classList.toggle('active');
+            // Changer l'icône du menu
+            const icon = menuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
         });
     }
 
-    // Smooth scroll pour les liens internes (désactivé car pages séparées)
-    // const internalLinks = document.querySelectorAll('a[href^="#"]');
+    // Fermer le menu mobile lors du clic sur un lien
+    const navItems = document.querySelectorAll('.nav-links a');
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    });
 
-    // internalLinks.forEach(link => {
-    //     link.addEventListener('click', function(e) {
-    //         e.preventDefault();
-    //         const targetId = this.getAttribute('href').substring(1);
-    //         const targetElement = document.getElementById(targetId);
+    // Smooth scroll pour les ancres (si présentes sur la même page)
+    document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId !== '#') {
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+    });
 
-    //         if (targetElement) {
-    //             targetElement.scrollIntoView({
-    //                 behavior: 'smooth',
-    //                 block: 'start'
-    //             });
-    //         }
-
-    //         // Fermer le menu mobile après clic
-    //         if (navLinks.classList.contains('active')) {
-    //             navLinks.classList.remove('active');
-    //         }
-    //     });
-    // });
-
-    // Validation du formulaire de contact
+    // Validation du formulaire de contact avec feedback visuel
     const contactForm = document.querySelector('#contact form');
-
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            const name = document.querySelector('#contact input[name="name"]').value.trim();
-            const email = document.querySelector('#contact input[name="email"]').value.trim();
-            const message = document.querySelector('#contact textarea[name="message"]').value.trim();
+            const name = document.querySelector('#contact input[name="name"]');
+            const email = document.querySelector('#contact input[name="email"]');
+            const message = document.querySelector('#contact textarea[name="message"]');
+            let isValid = true;
 
-            // Vérifications
-            if (!name || !email || !message) {
-                e.preventDefault();
-                alert('Erreur : Tous les champs doivent être remplis.');
-                return;
+            // Réinitialiser les styles d'erreur
+            [name, email, message].forEach(field => {
+                field.style.borderColor = '#ddd';
+            });
+
+            if (!name.value.trim()) {
+                name.style.borderColor = '#dc3545';
+                isValid = false;
             }
 
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                e.preventDefault();
-                alert('Erreur : Veuillez entrer une adresse email valide.');
-                return;
+            if (!email.value.trim()) {
+                email.style.borderColor = '#dc3545';
+                isValid = false;
+            } else {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email.value.trim())) {
+                    email.style.borderColor = '#dc3545';
+                    isValid = false;
+                }
             }
 
-            // Si tout est valide, laisser Formspree gérer la soumission
+            if (!message.value.trim()) {
+                message.style.borderColor = '#dc3545';
+                isValid = false;
+            }
+
+            if (!isValid) {
+                e.preventDefault();
+                showNotification('Veuillez remplir tous les champs correctement.', 'error');
+            }
         });
     }
 
     // Effet de changement de classe sur le header au scroll
     const header = document.querySelector('header');
-
     if (header) {
         window.addEventListener('scroll', function() {
             if (window.scrollY > 100) {
@@ -74,56 +103,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Animation de compteur (optionnel - si des statistiques sont ajoutées)
-    // Exemple : si vous ajoutez <span class="counter" data-target="100">0</span>
-    const counters = document.querySelectorAll('.counter');
-
-    if (counters.length > 0) {
-        const animateCounter = (counter) => {
-            const target = +counter.getAttribute('data-target');
-            const count = +counter.innerText;
-            const increment = target / 200;
-
-            if (count < target) {
-                counter.innerText = Math.ceil(count + increment);
-                setTimeout(() => animateCounter(counter), 10);
-            } else {
-                counter.innerText = target;
+    // Animation des éléments au scroll
+    const animateOnScroll = () => {
+        const elements = document.querySelectorAll('.service-item, .portfolio-item');
+        elements.forEach(element => {
+            const rect = element.getBoundingClientRect();
+            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+            if (rect.top <= windowHeight - 100) {
+                element.classList.add('visible');
             }
-        };
-
-        // Intersection Observer pour déclencher l'animation
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounter(entry.target);
-                    observer.unobserve(entry.target);
-                }
-            });
         });
+    };
 
-        counters.forEach(counter => {
-            observer.observe(counter);
-        });
-    }
-
-    // Portfolio animation on scroll
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-    if (portfolioItems.length > 0) {
-        const portfolioObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    portfolioObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        portfolioItems.forEach(item => {
-            portfolioObserver.observe(item);
-        });
-    }
+    window.addEventListener('scroll', animateOnScroll);
+    animateOnScroll(); // Exécuter au chargement
 
     // Lightbox functionality
     const lightbox = document.getElementById('lightbox');
@@ -136,9 +129,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Open lightbox on image click
         document.querySelectorAll('.portfolio-item img').forEach(img => {
             img.addEventListener('click', function() {
-                const item = this.parentElement;
-                const title = item.querySelector('h3').textContent;
-                const description = item.querySelector('p').textContent;
+                const item = this.closest('.portfolio-item');
+                const title = item.querySelector('h3')?.textContent || '';
+                const description = item.querySelector('p')?.textContent || '';
 
                 lightboxImage.src = this.src;
                 lightboxImage.alt = this.alt;
@@ -146,12 +139,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 lightboxDescription.textContent = description;
 
                 lightbox.classList.add('show');
+                document.body.style.overflow = 'hidden';
             });
         });
 
         // Close lightbox
         const closeLightbox = () => {
             lightbox.classList.remove('show');
+            document.body.style.overflow = '';
         };
 
         lightboxClose.addEventListener('click', closeLightbox);
@@ -168,3 +163,62 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Fonction utilitaire pour les notifications
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 24px;
+        background: ${type === 'error' ? '#dc3545' : '#28a745'};
+        color: white;
+        border-radius: 8px;
+        z-index: 3000;
+        animation: slideIn 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    `;
+    document.body.appendChild(notification);
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
+// Ajouter les animations CSS pour les notifications
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+    .service-item, .portfolio-item {
+        transition: opacity 0.6s ease, transform 0.6s ease;
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    .service-item.visible, .portfolio-item.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+`;
+document.head.appendChild(style);

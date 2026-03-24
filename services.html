@@ -28,6 +28,7 @@
                 <li><a href="services.html">Services</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">À propos</a></li>
             </ul>
         </nav>
     </header>
@@ -51,6 +52,10 @@
             <p>Optimisation et maintenance continue pour une performance optimale.</p>
         </div>
     </section>
+    <!-- Ajouter juste après l'ouverture du body -->
+<div class="loader">
+    <div class="spinner"></div>
+</div>
     </main>
 
     <footer>
@@ -61,5 +66,15 @@
             <a href="#"><i class="fab fa-linkedin"></i></a>
         </div>
     </footer>
+    <script>
+    // Masquer le loader après le chargement
+    window.addEventListener('load', () => {
+        const loader = document.querySelector('.loader');
+        setTimeout(() => {
+            loader.classList.add('hide');
+            setTimeout(() => loader.remove(), 500);
+        }, 500);
+    });
+</script>
 </body>
 </html>

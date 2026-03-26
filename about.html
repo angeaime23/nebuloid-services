@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez Nebuloid Services, votre partenaire pour la création de sites web professionnels">
+    <title>À propos - Nebuloid Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <style>
+        .about-hero {
+            background: linear-gradient(135deg, #e74c3c 0%, #000 100%);
+            color: white;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        .stat {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        .team {
+            background: #f8f9fa;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .team-member {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .team-member img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .team-member h3 {
+            margin: 1rem 0 0.5rem;
+        }
+        .team-member p {
+            color: #666;
+            padding: 0 1rem 1rem;
+        }
+        .values {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: white;
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .value-item i {
+            font-size: 3rem;
+            color: #e74c3c;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="menu-toggle" aria-label="Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="home.html">Accueil</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html">À propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about-hero">
+            <h1>À propos de Nebuloid Services</h1>
+            <p>Votre partenaire de confiance pour la création de sites web</p>
+        </section>
+
+        <section class="about-content">
+            <h2>Notre histoire</h2>
+            <p>Fondée en 2020, Nebuloid Services est née d'une passion pour le web et d'une volonté d'accompagner les entreprises dans leur transformation numérique. Notre agence réunit des experts passionnés qui mettent leur créativité et leur expertise au service de vos projets.</p>
+            
+            <div class="about-stats">
+                <div class="stat">
+                    <div class="stat-number">50+</div>
+                    <div>Projets réalisés</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">30+</div>
+                    <div>Clients satisfaits</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">4.9</div>
+                    <div>Note moyenne</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="values">
+            <h2>Nos valeurs</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Confiance</h3>
+                    <p>Nous construisons des relations durables basées sur la transparence et l'honnêteté.</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Innovation</h3>
+                    <p>Nous restons à la pointe des technologies pour vous offrir le meilleur.</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-heart"></i>
+                    <h3>Passion</h3>
+                    <p>Chaque projet est réalisé avec soin et dévouement.</p>
+                </div>
+            </div>
+        </section>
+        <!-- Ajouter juste après l'ouverture du body -->
+<div class="loader">
+    <div class="spinner"></div>
+</div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Nebuloid Services. Tous droits réservés.</p>
+        <div class="social-links">
+            <a href="#" data-tooltip="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" data-tooltip="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" data-tooltip="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Back to top button
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+            // Masquer le loader après le chargement
+    window.addEventListener('load', () => {
+        const loader = document.querySelector('.loader');
+        setTimeout(() => {
+            loader.classList.add('hide');
+            setTimeout(() => loader.remove(), 500);
+        }, 500);
+    });
+    </script>
+</body>
+</html>

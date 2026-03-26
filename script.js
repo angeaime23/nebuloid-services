@@ -91,17 +91,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Effet de changement de classe sur le header au scroll
-    const header = document.querySelector('header');
-    if (header) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-    }
+    // // Effet de changement de classe sur le header au scroll
+    // const header = document.querySelector('header');
+    // if (header) {
+    //     window.addEventListener('scroll', function() {
+    //         if (window.scrollY > 100) {
+    //             header.classList.add('scrolled');
+    //         } else {
+    //             header.classList.remove('scrolled');
+    //         }
+    //     });
+    // }
 
     // Animation des éléments au scroll
     const animateOnScroll = () => {

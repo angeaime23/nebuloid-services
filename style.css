@@ -31,7 +31,7 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: black;
     backdrop-filter: blur(10px);
     color: white;
     padding: 1rem 2rem;

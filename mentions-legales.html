@@ -27,6 +27,7 @@
             color: #1f2937;
             background-color: #f9fafb;
             padding: 2rem 1rem;
+            text-align:center;
         }
 
         .container {
@@ -41,6 +42,12 @@
             text-align:center;
         }
 
+           header{
+               background:linear-gradient(90deg,red,black);
+               border:1px solid black;
+               border-radius:10px;
+           }
+
         .container:hover{
             box-shadow:10px 20px 30px black;
             transform:scale(1.1);
@@ -48,11 +55,21 @@
         }
 
         nav {
-            background: linear-gradient(90deg,red,black);
             padding: 1rem 2rem;
             border-bottom: 1px solid #1f2937;
         }
 
+           nav li{
+               padding:10px;
+               border:1px solid blue;
+               background-color:dodgerblue;
+               border-radius:10px;
+           }
+
+           nav li:hover{
+              transform:translateY(10px)
+               transition:all 0.4s ease;
+           }
         nav a {
             color: white;
             text-decoration: none;
@@ -75,10 +92,10 @@
             font-weight: 700;
             margin-bottom: 1.5rem;
             color: #111827;
-            border-left: 4px solid #3b82f6;
+            border-bottom:4px solid black;
             padding-left: 1rem;
             text-align:center;
-            margin:50px;
+            margin-top:50px;
         }
 
         h2 {

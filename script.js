@@ -1,71 +1,48 @@
-// script.js - Version améliorée
+// script.js - Version corrigée et optimisée
 document.addEventListener('DOMContentLoaded', function() {
-    // Menu mobile (hamburger) - CORRECTION
+    // ================= MENU HAMBURGER =================
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
     if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', function() {
+        const toggleMenu = function(e) {
+            e.preventDefault();
             navLinks.classList.toggle('active');
-            // Changer l'icône du menu
+            // Changer l'icône
             const icon = menuToggle.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-    alert('JavaScript chargé !');  // test
-    // reste du code...
-});
-    const menuToggle = document.querySelector('.menu-toggle');
-if (menuToggle) {
-    console.log('Bouton trouvé');
-    menuToggle.addEventListener('click', function() {
-        alert('Clic détecté !');
-        // le reste
-    });
-} else {
-    console.log('Bouton non trouvé');
-}
-    
-
-    // Fermer le menu mobile lors du clic sur un lien
-    const navItems = document.querySelectorAll('.nav-links a');
-    navItems.forEach(item => {
-        item.addEventListener('click', () => {
-            if (navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-                const icon = menuToggle.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-    });
-
-    // Smooth scroll pour les ancres (si présentes sur la même page)
-    document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (targetId !== '#') {
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    e.preventDefault();
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+            if (icon) {
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
                 }
             }
-        });
+        };
+        // Écouteurs pour click et touch (meilleure compatibilité mobile)
+        menuToggle.addEventListener('click', toggleMenu);
+        menuToggle.addEventListener('touchstart', toggleMenu);
+    }
+
+    // Fermer le menu quand on clique sur un lien
+    const navItems = document.querySelectorAll('.nav-links a');
+    navItems.forEach(item => {
+        const closeMenu = function() {
+            if (navLinks && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                const icon = menuToggle?.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        };
+        item.addEventListener('click', closeMenu);
+        item.addEventListener('touchstart', closeMenu);
     });
 
-    // Validation du formulaire de contact avec feedback visuel
+    // ================= VALIDATION FORMULAIRE =================
     const contactForm = document.querySelector('#contact form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
@@ -74,16 +51,14 @@ if (menuToggle) {
             const message = document.querySelector('#contact textarea[name="message"]');
             let isValid = true;
 
-            // Réinitialiser les styles d'erreur
             [name, email, message].forEach(field => {
-                field.style.borderColor = '#ddd';
+                if (field) field.style.borderColor = '#ddd';
             });
 
             if (!name.value.trim()) {
                 name.style.borderColor = '#dc3545';
                 isValid = false;
             }
-
             if (!email.value.trim()) {
                 email.style.borderColor = '#dc3545';
                 isValid = false;
@@ -94,7 +69,6 @@ if (menuToggle) {
                     isValid = false;
                 }
             }
-
             if (!message.value.trim()) {
                 message.style.borderColor = '#dc3545';
                 isValid = false;
@@ -107,19 +81,7 @@ if (menuToggle) {
         });
     }
 
-    // // Effet de changement de classe sur le header au scroll
-    // const header = document.querySelector('header');
-    // if (header) {
-    //     window.addEventListener('scroll', function() {
-    //         if (window.scrollY > 100) {
-    //             header.classList.add('scrolled');
-    //         } else {
-    //             header.classList.remove('scrolled');
-    //         }
-    //     });
-    // }
-
-    // Animation des éléments au scroll
+    // ================= ANIMATION AU SCROLL =================
     const animateOnScroll = () => {
         const elements = document.querySelectorAll('.service-item, .portfolio-item');
         elements.forEach(element => {
@@ -130,11 +92,10 @@ if (menuToggle) {
             }
         });
     };
-
     window.addEventListener('scroll', animateOnScroll);
-    animateOnScroll(); // Exécuter au chargement
+    animateOnScroll();
 
-    // Lightbox functionality
+    // ================= LIGHTBOX =================
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.querySelector('.lightbox-image');
     const lightboxTitle = document.querySelector('.lightbox-title');
@@ -142,7 +103,6 @@ if (menuToggle) {
     const lightboxClose = document.querySelector('.lightbox-close');
 
     if (lightbox) {
-        // Open lightbox on image click
         document.querySelectorAll('.portfolio-item img').forEach(img => {
             img.addEventListener('click', function() {
                 const item = this.closest('.portfolio-item');
@@ -159,28 +119,21 @@ if (menuToggle) {
             });
         });
 
-        // Close lightbox
         const closeLightbox = () => {
             lightbox.classList.remove('show');
             document.body.style.overflow = '';
         };
-
         lightboxClose.addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', function(e) {
-            if (e.target === lightbox) {
-                closeLightbox();
-            }
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
         });
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && lightbox.classList.contains('show')) {
-                closeLightbox();
-            }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('show')) closeLightbox();
         });
     }
 });
 
-// Fonction utilitaire pour les notifications
+// ================= NOTIFICATIONS =================
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
@@ -204,28 +157,16 @@ function showNotification(message, type = 'info') {
     }, 3000);
 }
 
-// Ajouter les animations CSS pour les notifications
+// ================= STYLES DYNAMIQUES =================
 const style = document.createElement('style');
 style.textContent = `
     @keyframes slideIn {
-        from {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
     }
     @keyframes slideOut {
-        from {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateX(100%);
-            opacity: 0;
-        }
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(100%); opacity: 0; }
     }
     .service-item, .portfolio-item {
         transition: opacity 0.6s ease, transform 0.6s ease;

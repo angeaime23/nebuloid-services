@@ -42,14 +42,17 @@
             text-align:center;
             border-top:2px  solid linear-gradient(90deg,red,black);
             animation:Flotting 2s infinite alternate;
+            transition:all 0.5s ease;
         }
 
         @keyframes Flotting{
             50%{
             transform:translateY(-5px);
+            box-shadow:5px 5px 5px black;
             }
            100%{
             transform:translateY(5px);
+            box-shadow:5px 5px 5px black;
            }
         }
 
@@ -92,7 +95,7 @@
             border-bottom:4px solid black;
             padding-left: 1rem;
             text-align:center;
-            margin-top:50px;
+            margin:50px;
         }
 
         h2 {

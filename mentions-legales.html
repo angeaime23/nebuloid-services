@@ -41,6 +41,16 @@
             font-size:20px;
             text-align:center;
             border-top:2px  solid linear-gradient(90deg,red,black);
+            animation:Flotting 2s infinite alternate;
+        }
+
+        @keyframs Flotting{
+            50%{
+             transform:translateY(-5px);
+            }
+            100%{
+             transform:translateY(5px);
+           }
         }
 
            header{
@@ -50,11 +60,6 @@
                margin:none;
            }
 
-        .container:hover{
-            box-shadow:20px 30px 50px black;
-            transform:scale(1.1);
-            transition:all 0.5s ease;
-            cursor:pointer;
         }
 
         nav {

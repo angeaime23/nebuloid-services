@@ -19,6 +19,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    document.addEventListener('DOMContentLoaded', function() {
+    alert('JavaScript chargé !');  // test
+    // reste du code...
+});
+    const menuToggle = document.querySelector('.menu-toggle');
+if (menuToggle) {
+    console.log('Bouton trouvé');
+    menuToggle.addEventListener('click', function() {
+        alert('Clic détecté !');
+        // le reste
+    });
+} else {
+    console.log('Bouton non trouvé');
+}
+    
+
     // Fermer le menu mobile lors du clic sur un lien
     const navItems = document.querySelectorAll('.nav-links a');
     navItems.forEach(item => {

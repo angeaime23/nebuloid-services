@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog Nebuloid Services – Conseils et actualités sur la création de sites web, le SEO et la présence en ligne.">
+    <meta name="keywords" content="blog site vitrine, conseils création site, SEO, développement web">
+    <meta name="author" content="Nebuloid Services">
+    <meta property="og:title" content="Blog - Nebuloid Services">
+    <meta property="og:description" content="Découvrez nos articles pour mieux comprendre la création de sites web et améliorer votre présence en ligne.">
+    <meta property="og:url" content="https://angeaime23.github.io/nebuloide-services/blog.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://angeaime23.github.io/nebuloide-services/blog.html">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <title>Blog - Nebuloid Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <button class="menu-toggle" aria-label="Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">À propos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="blog-header">
+            <h1>Blog</h1>
+            <p>Astuces, actualités et retours d’expérience sur la création de sites web.</p>
+        </section>
+
+        <section class="blog-list">
+            <article class="blog-card">
+                <h2><a href="blog/prix-site-vitrine.html">Combien coûte un site vitrine ?</a></h2>
+                <div class="blog-meta">
+                    <span><i class="far fa-calendar-alt"></i> 28 mars 2026</span>
+                    <span><i class="far fa-folder"></i> Conseils</span>
+                </div>
+                <p>Vous vous demandez quel budget prévoir pour votre site web ? Découvrez les différents facteurs qui influencent le prix et nos conseils pour investir intelligemment...</p>
+                <a href="blog/prix-site-vitrine.html" class="read-more">Lire la suite →</a>
+            </article>
+
+            <!-- Vous ajouterez d’autres articles ici, dans le même format -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Nebuloid Services. Tous droits réservés.</p>
+        <div class="social-links">
+            <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+            <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <!-- Ajout du loader (identique aux autres pages) -->
+    <div class="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <script>
+        // Masquer le loader après le chargement
+        window.addEventListener('load', () => {
+            const loader = document.querySelector('.loader');
+            setTimeout(() => {
+                loader.classList.add('hide');
+                setTimeout(() => loader.remove(), 500);
+            }, 500);
+        });
+    </script>
+</body>
+</html>

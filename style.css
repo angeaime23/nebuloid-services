@@ -50,8 +50,8 @@ header.scrolled {
     display: none;
     background: none;
     border: none;
-    color: white;
-    font-size: 1.8rem;
+    color: black;
+    font-size: 2rem;
     cursor: pointer;
 }
 

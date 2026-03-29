@@ -184,7 +184,7 @@ document.head.appendChild(style);
 let searchIndex = [];
 
 // Charger l'index
-fetch('/search-index.json')
+fetch('search-index.json')
     .then(response => response.json())
     .then(data => {
         searchIndex = data;
